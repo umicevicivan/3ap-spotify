@@ -1,0 +1,4 @@
+<app-search [type]="'album'" [placeholder]="'Type some album name'" (results)="onResults($event)"></app-search>
+<div *ngIf="searched$|async" class="table-responsive mt-3">
+    <app-albums-table [albums]="albums$|async"></app-albums-table>
+</div>

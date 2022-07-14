@@ -1,0 +1,31 @@
+<app-search [type]="'artist'" [placeholder]="'Type some artist name'" (results)="onResults($event)"></app-search>
+<div *ngIf="searched$|async" class="table-responsive mt-3">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Genres</th>
+            <th>Followers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let artist of (artists$|async)" class="c-pointer" [routerLink]="['/artists', artist.id]">
+            <td>
+                <img class="table-thumbnail" [alt]="'Artist thumbnail'"
+                     [src]="artist.images.length > 0 ? artist.images[0]?.url : 'assets/images/no-image.png'">
+            </td>
+            <td class="align-middle">{{artist.name}}</td>
+            <td class="align-middle text-muted">{{artist.genres|genres}}</td>
+            <td class="align-middle">{{artist.followers.total|number}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr *ngIf="artistsEmpty$|async">
+            <td [colSpan]="4">
+                <p class="text-muted text-center mb-0">There are no artists found</p>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

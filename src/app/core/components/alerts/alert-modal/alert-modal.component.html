@@ -1,0 +1,22 @@
+<div class="modal-body text-center" *ngIf="options as opt">
+    <i class="fa fa-fw fa-5x mt-3"
+       [class.fa-question-circle]="opt.icon==='question'"
+       [class.fa-exclamation-triangle]="opt.icon==='warning'"
+       [class.fa-exclamation-circle]="opt.icon==='error'"
+       [class.fa-info-circle]="opt.icon==='info'"
+       [class.fa-check-double]="opt.icon==='success'"
+       [class.text-success]="opt.icon==='success'"
+       [class.text-info]="opt.icon==='info'||opt.icon==='question'"
+       [class.text-danger]="opt.icon==='error'"
+       [class.text-warning]="opt.icon==='warning'"></i>
+    <h4 class="mt-3" *ngIf="opt.title">{{opt.title}}</h4>
+    <p class="mt-3" *ngIf="opt.text">{{opt.text}}</p>
+    <div class="d-flex align-items-center justify-content-center mt-3">
+        <button *ngIf="opt.showCancelButton" class="btn mx-2" (click)="cancel(opt.cancelButtonValue)">
+            {{opt.cancelButtonText || 'Cancel'}}
+        </button>
+        <button *ngIf="opt.showConfirmButton" class="btn mx-2 btn-primary" (click)="confirm(opt.confirmButtonValue)">
+            {{opt.confirmButtonText || 'Confirm'}}
+        </button>
+    </div>
+</div>

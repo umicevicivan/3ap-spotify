@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand ml-3" [routerLink]="['/home']">
+            <img [src]="'assets/images/spotify-icon.png'" [alt]="'MusicBox'" [height]="30" [width]="30" class="mr-1">
+            MusicBox</a>
+        <ng-container *ngIf="!(isLoginPage$|async)">
+            <div>
+                <button class="btn btn-outline-light mr-2" [routerLinkActive]="'active'"
+                        [routerLink]="['/home']">Home
+                </button>
+                <button class="btn btn-outline-light mr-2" [routerLinkActive]="'active'"
+                        [routerLink]="['/artists']">Artists
+                </button>
+                <button class="btn btn-outline-light  mr-2" [routerLinkActive]="'active'"
+                        [routerLink]="['/albums']">Albums
+                </button>
+            </div>
+            <div>
+                <button class="btn btn-outline-light  mr-2" [routerLinkActive]="'active'"
+                        [routerLink]="['/settings']">Settings
+                </button>
+                <button class="btn btn-danger" (click)="logout()">Logout</button>
+            </div>
+        </ng-container>
+    </div>
+</nav>

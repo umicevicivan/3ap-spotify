@@ -1,0 +1,22 @@
+<form class="d-flex my-4" [formGroup]="searchForm">
+    <div class="input-group">
+        <input class="form-control"
+               autocomplete="off"
+               formControlName="search"
+               type="search"
+               [placeholder]="placeholder"
+               [ngbTypeahead]="searchHistory"
+               [focusFirst]="false"
+               (focus)="focus$.next($any($event).target.value)"
+               (click)="click$.next($any($event).target.value)"
+               #searchInput="ngbTypeahead">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="search()">
+                <span>Search</span>
+                <i class="fa fa-question fa-fw"></i>
+            </button>
+        </div>
+    </div>
+</form>
+
+

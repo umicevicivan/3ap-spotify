@@ -1,0 +1,53 @@
+<h4 class="mb-2 mt-3 text-center">SETTINGS</h4>
+<form>
+    <div class="form-row col-sm-6 offset-3">
+        <div class="form-group">
+            <label for="albumHistoryMaxLength">Number of stored recently viewed albums</label>
+            <input [(ngModel)]="albumHistoryMaxLength"
+                   class="form-control mb-2"
+                   name="albumHistoryMaxLength"
+                   id="albumHistoryMaxLength"
+                   autocomplete="off"
+                   [placeholder]="'Please write a value'"
+                   (keydown)="numberOnly($event)">
+        </div>
+        <div class="form-group">
+            <label for="albumHistoryDisplayLength">Number of visible recently viewed albums</label>
+            <input [(ngModel)]="albumHistoryDisplayLength"
+                   class="form-control mb-2"
+                   name="albumHistoryDisplayLength"
+                   id="albumHistoryDisplayLength"
+                   autocomplete="off"
+                   [placeholder]="'Please write a value'"
+                   (keydown)="numberOnly($event)">
+        </div>
+        <div class="form-group">
+            <label for="searchHistoryMaxLength">Number of stored previous searches</label>
+            <input [(ngModel)]="searchHistoryMaxLength"
+                   class="form-control mb-2"
+                   name="searchHistoryMaxLength"
+                   id="searchHistoryMaxLength"
+                   autocomplete="off"
+                   [placeholder]="'Please write a value'"
+                   (keydown)="numberOnly($event)">
+        </div>
+        <div class="form-group">
+            <label for="searchHistoryDisplayLength">Number of visible previous searches</label>
+            <input [(ngModel)]="searchHistoryDisplayLength"
+                   class="form-control mb-2"
+                   name="searchHistoryDisplayLength"
+                   id="searchHistoryDisplayLength"
+                   autocomplete="off"
+                   [placeholder]="'Please write a value'"
+                   (keydown)="numberOnly($event)">
+        </div>
+        <div class="form-group">
+            <div class="mt-3 right">
+                <button class="btn btn-info" (click)="save()">
+                    <span>Save</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</form>

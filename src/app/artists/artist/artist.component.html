@@ -1,0 +1,15 @@
+<ng-container *ngIf="(artist$|async) as artist">
+    <div class="row mb-3">
+        <div class="col-3">
+            <img class="page-thumbnail" [alt]="'Artist thumbnail'"
+                 [src]="artist.images.length > 0 ? artist.images[0]?.url : 'assets/images/no-image.png'">
+        </div>
+        <div class="col-auto mt-auto mb-auto">
+            <p class="text-muted small mb-0">{{artist.type|titlecase}}</p>
+            <h1 class="mb-2 bold">{{artist.name}}</h1>
+            <p class="mb-0">Followers: <span class="text-muted">{{artist.followers.total|number}}</span></p>
+            <p>Genres: <span class="text-muted">{{artist.genres|genres}}</span></p>
+        </div>
+    </div>
+    <app-albums-table [albums]="albums$|async"></app-albums-table>
+</ng-container>

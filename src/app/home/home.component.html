@@ -1,0 +1,40 @@
+<div *ngIf="!(pending$|async); else dataPending">
+    <h2 class="text-center">New Releases</h2>
+    <ng-container *ngIf="!(newReleasesEmpty$|async); else newReleasesEmpty">
+        <div class="row">
+            <div *ngFor="let release of (newReleases$|async)" class="col-6 col-sm-6 col-md-4 col-lg-3 my-3">
+                <div class="page-thumbnail">
+                    <img class="page-thumbnail c-pointer" [alt]="'Album thumbnail'"
+                         [src]="release.images.length > 0 ? release.images[0]?.url : 'assets/images/no-image.png'"
+                         [routerLink]="['/albums', release.id]">
+                </div>
+                <p class="text-center italic album-title">{{release.name}}</p>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #newReleasesEmpty>
+        <p class="text-center italic text-muted">No new releases</p>
+    </ng-template>
+
+    <h3 class="text-center mt-4 mb-2">Recently viewed albums</h3>
+    <ng-container *ngIf="!(albumHistoryEmpty$|async); else albumHistoryEmpty">
+        <div class="row">
+            <div *ngFor="let album of (albumHistory$|async)" class="col-2 my-3">
+                <img class="page-thumbnail c-pointer" [alt]="'Album thumbnail'"
+                     [src]="album.images?.length > 0 ? album.images[0]?.url : 'assets/images/no-image.png'"
+                     [routerLink]="['/albums', album.id]">
+                <p class="text-center italic">{{album.name}}</p>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #albumHistoryEmpty>
+        <p class="text-center italic text-muted">No recently viewed albums</p>
+    </ng-template>
+</div>
+<ng-template #dataPending>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+</ng-template>
