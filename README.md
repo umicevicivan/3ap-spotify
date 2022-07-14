@@ -1,3 +1,10 @@
+# How to run solution:
+Terminal 1: npm install
+
+Terminal 1: npm run dev
+
+Terminal 2: npm run start
+
 # MusicBox
 
 This is an assignment project template for 3AP candidates that evaluates fullstack skills.
